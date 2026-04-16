@@ -32,26 +32,26 @@
 > in pure Dart with zero Flutter or Dio imports.
 
 ### Profile / User
-- [ ] **2.1** Create `IUserRepository` (abstract) in `lib/features/profile/domain/repo/` with method `Future<Either<Failure, UserEntity>> getUser()`.
-- [ ] **2.2** Create `GetUserUseCase` extending `BaseUseCase<UserEntity, NoParams>` — calls `IUserRepository.getUser()`.
+- [x] **2.1** Create `IUserRepository` (abstract) in `lib/features/profile/domain/repo/` with method `Future<Either<Failure, UserEntity>> getUser()`.
+- [x] **2.2** Create `GetUserUseCase` extending `BaseUseCase<UserEntity, NoParams>` — calls `IUserRepository.getUser()`.
 
 ### Beneficiaries
-- [ ] **2.3** Create `IBeneficiaryRepository` (abstract) in `lib/features/beneficiaries/domain/repo/` with methods:
+- [x] **2.3** Create `IBeneficiaryRepository` (abstract) in `lib/features/beneficiaries/domain/repo/` with methods:
   - `Future<Either<Failure, List<BeneficiaryEntity>>> getBeneficiaries()`
   - `Future<Either<Failure, BeneficiaryEntity>> addBeneficiary(AddBeneficiaryParams params)`
-- [ ] **2.4** Define `AddBeneficiaryParams` in `lib/features/beneficiaries/domain/params/` with fields `nickname` and `phoneNumber`; extend `Equatable`.
-- [ ] **2.5** Create `GetBeneficiariesUseCase` extending `BaseUseCase<List<BeneficiaryEntity>, NoParams>`.
-- [ ] **2.6** Create `AddBeneficiaryUseCase` extending `BaseUseCase<BeneficiaryEntity, AddBeneficiaryParams>`.
+- [x] **2.4** Define `AddBeneficiaryParams` in `lib/features/beneficiaries/domain/params/` with fields `nickname` and `phoneNumber`; extend `Equatable`.
+- [x] **2.5** Create `GetBeneficiariesUseCase` extending `BaseUseCase<List<BeneficiaryEntity>, NoParams>`.
+- [x] **2.6** Create `AddBeneficiaryUseCase` extending `BaseUseCase<BeneficiaryEntity, AddBeneficiaryParams>`.
   - Enforce **BR-01**: if existing beneficiaries count ≥ 5, return `Left(Failure)`.
   - Enforce **BR-02**: if nickname is empty or length > 20, return `Left(Failure)`.
 
 ### Transactions / Top-Up
-- [ ] **2.7** Create `ITransactionRepository` (abstract) in `lib/features/history/domain/repo/` with methods:
+- [x] **2.7** Create `ITransactionRepository` (abstract) in `lib/features/history/domain/repo/` with methods:
   - `Future<Either<Failure, List<TransactionEntity>>> getTransactions()`
   - `Future<Either<Failure, TransactionEntity>> topUp(TopUpParams params)`
-- [ ] **2.8** Define `TopUpParams` in `lib/features/history/domain/params/` with fields: `user` (UserEntity), `beneficiaryId` (String), `amount` (double), `allBeneficiaries` (List<BeneficiaryEntity>), `monthlyTransactions` (List<TransactionEntity>); extend `Equatable`.
-- [ ] **2.9** Create `GetTransactionsUseCase` extending `BaseUseCase<List<TransactionEntity>, NoParams>`.
-- [ ] **2.10** Create `TopUpUseCase` extending `BaseUseCase<TransactionEntity, TopUpParams>`.
+- [x] **2.8** Define `TopUpParams` in `lib/features/history/domain/params/` with fields: `user` (UserEntity), `beneficiaryId` (String), `amount` (double), `allBeneficiaries` (List<BeneficiaryEntity>), `monthlyTransactions` (List<TransactionEntity>); extend `Equatable`.
+- [x] **2.9** Create `GetTransactionsUseCase` extending `BaseUseCase<List<TransactionEntity>, NoParams>`.
+- [x] **2.10** Create `TopUpUseCase` extending `BaseUseCase<TransactionEntity, TopUpParams>`.
   - Enforce **BR-03**: amount must be in `[5, 10, 20, 30, 50, 75, 100]`.
   - Enforce **BR-04**: fee is always AED 3.
   - Enforce **BR-05**: `user.balance >= amount + 3`, else return `Left(Failure('Insufficient balance'))`.
