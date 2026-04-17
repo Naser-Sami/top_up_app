@@ -9,7 +9,7 @@
 ---
 
 ## Phase 1 — Scaffolding & Core Infrastructure
-
+o
 > Goal: Every piece of shared plumbing is in place so feature work never has to touch
 > core infrastructure again.
 
@@ -67,11 +67,11 @@
 > all business rule scenarios.
 
 ### Profile / User
-- [ ] **3.1** Create `UserModel` in `lib/features/profile/data/models/` with `fromJson`/`toJson`; includes `isVerified` bool.
-- [ ] **3.2** Create `UserMapper` in `lib/features/profile/data/mapper/` — `UserModel → UserEntity`.
-- [ ] **3.3** Create `UserRemoteDataSource` in `lib/features/profile/data/data_source/remote_data_source/` — returns a hardcoded mock `UserModel` (simulate HTTP GET `/user`); set `balance: 1500.0`, `isVerified: true` as defaults.
-- [ ] **3.4** Create `UserRepositoryImpl` in `lib/features/profile/data/repo_impl/` implementing `IUserRepository`; wraps data source, catches exceptions, maps to `Failure`.
-- [ ] **3.5** Register `IUserRepository → UserRepositoryImpl` and `GetUserUseCase` in `init_controllers.dart`.
+- [x] **3.1** Create `UserModel` in `lib/features/profile/data/models/` with `fromJson`/`toJson`; includes `isVerified` bool.
+- [x] **3.2** Create `UserMapper` in `lib/features/profile/data/mapper/` — `UserModel → UserEntity`.
+- [x] **3.3** Create `UserRemoteDataSource` in `lib/features/profile/data/data_source/remote_data_source/` — returns a hardcoded mock `UserModel` (simulate HTTP GET `/user`); set `balance: 1500.0`, `isVerified: true` as defaults.
+- [x] **3.4** Create `UserRepositoryImpl` in `lib/features/profile/data/repo_impl/` implementing `IUserRepository`; wraps data source, catches exceptions, maps to `Failure`.
+- [x] **3.5** Register `IUserRepository → UserRepositoryImpl` and `GetUserUseCase` in `init_controllers.dart`.
 
 ### Beneficiaries
 - [ ] **3.6** Create `BeneficiaryModel` in `lib/features/beneficiaries/data/models/` with `fromJson`/`toJson`.
