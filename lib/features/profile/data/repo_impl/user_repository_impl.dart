@@ -6,7 +6,7 @@ import 'package:top_up_app/features/profile/domain/entities/user_entity.dart';
 import 'package:top_up_app/features/profile/domain/repo/i_user_repository.dart';
 
 class UserRepositoryImpl implements IUserRepository {
-  final UserRemoteDataSource _userRemoteDataSource;
+  final IUserRemoteDataSource _userRemoteDataSource;
   const UserRepositoryImpl(this._userRemoteDataSource);
 
   @override

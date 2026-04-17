@@ -74,11 +74,11 @@ o
 - [x] **3.5** Register `IUserRepository → UserRepositoryImpl` and `GetUserUseCase` in `init_controllers.dart`.
 
 ### Beneficiaries
-- [ ] **3.6** Create `BeneficiaryModel` in `lib/features/beneficiaries/data/models/` with `fromJson`/`toJson`.
-- [ ] **3.7** Create `BeneficiaryMapper` in `lib/features/beneficiaries/data/mapper/`.
-- [ ] **3.8** Create `BeneficiaryRemoteDataSource` — returns a hardcoded list of mock beneficiaries (start with 2 pre-seeded entries); simulates add-beneficiary POST.
-- [ ] **3.9** Create `BeneficiaryRepositoryImpl` implementing `IBeneficiaryRepository`.
-- [ ] **3.10** Register `IBeneficiaryRepository → BeneficiaryRepositoryImpl`, `GetBeneficiariesUseCase`, and `AddBeneficiaryUseCase` in `init_controllers.dart`.
+- [x] **3.6** Create `BeneficiaryModel` in `lib/features/beneficiaries/data/models/` with `fromJson`/`toJson`.
+- [x] **3.7** Create `BeneficiaryMapper` in `lib/features/beneficiaries/data/mapper/`.
+- [x] **3.8** Create `BeneficiaryRemoteDataSource` — returns a hardcoded list of mock beneficiaries (start with 2 pre-seeded entries); simulates add-beneficiary POST.
+- [x] **3.9** Create `BeneficiaryRepositoryImpl` implementing `IBeneficiaryRepository`.
+- [x] **3.10** Register `IBeneficiaryRepository → BeneficiaryRepositoryImpl`, `GetBeneficiariesUseCase`, and `AddBeneficiaryUseCase` in `init_controllers.dart`.
 
 ### Transactions
 - [ ] **3.11** Create `TransactionModel` in `lib/features/history/data/models/` with `fromJson`/`toJson`.
