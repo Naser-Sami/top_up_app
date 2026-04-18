@@ -1,4 +1,6 @@
-class TransactionModel {
+import 'package:equatable/equatable.dart';
+
+class TransactionModel extends Equatable {
   final String id;
   final String beneficiaryId;
   final double amount;
@@ -32,4 +34,7 @@ class TransactionModel {
       'createdAt': createdAt.toIso8601String(),
     };
   }
+
+  @override
+  List<Object?> get props => [id, beneficiaryId, amount, fee, createdAt];
 }

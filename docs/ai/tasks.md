@@ -95,9 +95,9 @@ o
 > success, and failure states for every user action.
 
 ### BLoCs / Cubits
-- [ ] **4.1** Create `UserCubit` (or `ProfileCubit`) with states `UserInitial`, `UserLoading`, `UserLoaded(UserEntity)`, `UserError(String)`. Register in `bloc_providers.dart`.
-- [ ] **4.2** Create `BeneficiaryCubit` with states `BeneficiaryInitial`, `BeneficiaryLoading`, `BeneficiaryLoaded(List<BeneficiaryEntity>)`, `BeneficiaryError(String)`, `BeneficiaryAdded`. Register in `bloc_providers.dart`.
-- [ ] **4.3** Create `TransactionCubit` (or `TopUpCubit`) with states `TransactionInitial`, `TransactionLoading`, `TransactionLoaded(List<TransactionEntity>)`, `TopUpSuccess(TransactionEntity)`, `TransactionError(String)`. Register in `bloc_providers.dart`.
+- [x] **4.1** Create `UserCubit` (or `ProfileCubit`) with states `UserInitial`, `UserLoading`, `UserLoaded(UserEntity)`, `UserError(String)`. Register in `bloc_providers.dart`.
+- [x] **4.2** Create `BeneficiaryCubit` with states `BeneficiaryInitial`, `BeneficiaryLoading`, `BeneficiaryLoaded(List<BeneficiaryEntity>)`, `BeneficiaryError(String)`, `BeneficiaryAdded`. Register in `bloc_providers.dart`.
+- [x] **4.3** Create `TransactionCubit` (or `TopUpCubit`) with states `TransactionInitial`, `TransactionLoading`, `TransactionLoaded(List<TransactionEntity>)`, `TopUpSuccess(TransactionEntity)`, `TransactionError(String)`. Register in `bloc_providers.dart`.
 
 ### Screens & Widgets
 - [ ] **4.4** **Home Screen** (`home_screen.dart`): Display user balance and verification badge; show summary cards for beneficiaries and recent transactions. Load data on screen init via `UserCubit` + `TransactionCubit`.

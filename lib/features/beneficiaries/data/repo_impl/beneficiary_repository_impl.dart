@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:top_up_app/core/errors/failure.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 import 'package:top_up_app/features/beneficiaries/data/mapper/beneficiary_mapper.dart';
-import 'package:top_up_app/features/beneficiaries/domain/params/add_beneficiary_params.dart';
 import 'package:top_up_app/features/beneficiaries/domain/repo/i_beneficiary_repository.dart';
 
 class BeneficiaryRepositoryImpl implements IBeneficiaryRepository {

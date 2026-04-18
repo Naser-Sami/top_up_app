@@ -1,4 +1,6 @@
-class UserModel {
+import 'package:equatable/equatable.dart';
+
+class UserModel extends Equatable {
   final String id;
   final String name;
   final double balance;
@@ -28,4 +30,7 @@ class UserModel {
       'isVerified': isVerified,
     };
   }
+
+  @override
+  List<Object?> get props => [id, name, balance, isVerified];
 }

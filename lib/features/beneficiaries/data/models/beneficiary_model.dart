@@ -1,4 +1,6 @@
-class BeneficiaryModel {
+import 'package:equatable/equatable.dart';
+
+class BeneficiaryModel extends Equatable {
   final String id;
   final String nickname;
   final String phoneNumber;
@@ -20,4 +22,7 @@ class BeneficiaryModel {
   Map<String, dynamic> toJson() {
     return {'id': id, 'nickname': nickname, 'phoneNumber': phoneNumber};
   }
+
+  @override
+  List<Object?> get props => [id, nickname, phoneNumber];
 }
