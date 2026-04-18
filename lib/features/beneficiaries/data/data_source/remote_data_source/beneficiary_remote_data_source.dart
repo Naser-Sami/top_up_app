@@ -7,17 +7,20 @@ abstract class IBeneficiaryRemoteDataSource {
 }
 
 class BeneficiaryRemoteDataSourceImpl implements IBeneficiaryRemoteDataSource {
-  // Our "mock database" running in memory.
-  // Pre-seeded with 2 entries as requested.
   final List<BeneficiaryModel> _mockDatabase = [
     const BeneficiaryModel(
       id: 'ben_1',
-      nickname: 'Home Internet',
+      nickname: 'Sarah',
       phoneNumber: '+971501234567',
     ),
     const BeneficiaryModel(
       id: 'ben_2',
-      nickname: 'Driver',
+      nickname: 'Khalid',
+      phoneNumber: '+971559876543',
+    ),
+    const BeneficiaryModel(
+      id: 'ben_3',
+      nickname: 'Fatima',
       phoneNumber: '+971559876543',
     ),
   ];

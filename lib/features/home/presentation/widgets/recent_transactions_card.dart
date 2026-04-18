@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/utils/extensions/date_time_extensions.dart';
+import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
+import 'package:top_up_app/features/history/_history.dart';
 
 class RecentTransactionsCard extends StatelessWidget {
   const RecentTransactionsCard({super.key});
@@ -17,32 +21,70 @@ class RecentTransactionsCard extends StatelessWidget {
             const SizedBox(height: AppSize.s12),
             SizedBox(
               width: context.width,
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemCount: 8,
-                physics: const NeverScrollableScrollPhysics(),
-                separatorBuilder: (context, index) => const Divider(),
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    leading: Container(
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: context.theme.colorScheme.primaryContainer,
-                      ),
-                    ),
-                    title: Text('Transaction ${index + 1}'),
-                    subtitle: const Text('Today, 10:30 AM'),
-                    trailing: Text('AED ${100 * (index + 1)}.00'),
-                  );
-                },
-              ),
+              child: const _RecentTransactionsList(),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _RecentTransactionsList extends StatelessWidget {
+  const _RecentTransactionsList();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TransactionCubit, TransactionState>(
+      builder: (context, state) {
+        if (state is TransactionLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is TransactionLoaded) {
+          final beneficiaryState = context.read<BeneficiaryCubit>().state;
+          final beneficiaries = beneficiaryState is BeneficiaryLoaded
+              ? beneficiaryState.beneficiaries
+              : <BeneficiaryEntity>[];
+
+          final transactions = state.transactions;
+
+          if (transactions.isEmpty) {
+            return const Center(child: Text('No transactions found.'));
+          }
+
+          return ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: transactions.length,
+            separatorBuilder: (context, index) => const Divider(),
+            itemBuilder: (context, index) {
+              final transaction = transactions[index];
+              final beneficiary = beneficiaries.firstWhere(
+                (b) => b.id == transaction.beneficiaryId,
+                orElse: () => const BeneficiaryEntity(
+                  id: '',
+                  nickname: 'Unknown',
+                  phoneNumber: '',
+                ),
+              );
+
+              return ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: CircleAvatar(
+                  radius: 30,
+                  child: Text(beneficiary.nickname[0].toUpperCase()),
+                ),
+                title: Text(beneficiary.nickname),
+                subtitle: Text(transaction.createdAt.toRelativeTime()),
+                trailing: Text('AED ${transaction.amount.toStringAsFixed(0)}'),
+              );
+            },
+          );
+        } else if (state is TransactionError) {
+          return Center(child: Text(state.message));
+        } else {
+          return const SizedBox.shrink();
+        }
+      },
     );
   }
 }

@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 class LightThemeColors {
   LightThemeColors._();
 
-  // Primary: Navy (#0A1628)
-  static const primary = Color(0xFF0A1628);
+  // Primary Colors
+  static const primary = Color(0xFF452CE8);
   static const onPrimary = Color(0xFFFFFFFF);
-  static const primaryContainer = Color(
-    0xFFD1E4FF,
-  ); // Lightened navy for contrast
-  static const onPrimaryContainer = Color(0xFF001D36);
+  static const primaryContainer = Color.fromARGB(255, 21, 101, 192);
+  static const onPrimaryContainer = Color(0xFF1A1254);
 
   // Secondary/Accent: Blue (#2D7DD2)
-  static const secondary = Color(0xFF2D7DD2);
+  static const secondary = Color.fromARGB(255, 21, 101, 192);
   static const onSecondary = Color(0xFFFFFFFF);
   static const secondaryContainer = Color(0xFFD6E3FF);
   static const onSecondaryContainer = Color(0xFF001B3E);

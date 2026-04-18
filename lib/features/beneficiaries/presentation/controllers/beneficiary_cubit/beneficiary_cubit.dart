@@ -2,8 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/services/use_cases/base_use_case.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 
-import 'beneficiary_state.dart';
-
 class BeneficiaryCubit extends Cubit<BeneficiaryState> {
   final AddBeneficiaryUseCase addBeneficiaryUseCase;
   final GetBeneficiariesUseCase getBeneficiariesUseCase;

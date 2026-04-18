@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:top_up_app/core/constants/top_up_option.dart';
 import 'package:top_up_app/core/errors/failure.dart';
 import 'package:top_up_app/features/history/_history.dart';
-import 'package:top_up_app/features/history/domain/repo/i_transaction_repository.dart';
 
 class TransactionRepositoryImpl implements ITransactionRepository {
   final ITransactionRemoteDataSource _transactionRemoteDataSource;

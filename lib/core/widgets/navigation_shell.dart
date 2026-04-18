@@ -7,10 +7,7 @@ import 'package:go_router/go_router.dart';
 /// in the [StatefulShellRoute.indexedStack] while preserving the navigation
 /// state of every tab.
 class NavigationShell extends StatelessWidget {
-  const NavigationShell({
-    super.key,
-    required this.navigationShell,
-  });
+  const NavigationShell({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
@@ -182,10 +179,8 @@ class _NavBarItem extends StatelessWidget {
                 curve: Curves.easeOutBack,
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 200),
-                  transitionBuilder: (child, animation) => ScaleTransition(
-                    scale: animation,
-                    child: child,
-                  ),
+                  transitionBuilder: (child, animation) =>
+                      ScaleTransition(scale: animation, child: child),
                   child: Icon(
                     isSelected ? item.activeIcon : item.icon,
                     key: ValueKey(isSelected),

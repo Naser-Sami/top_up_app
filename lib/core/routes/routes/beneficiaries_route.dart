@@ -9,6 +9,6 @@ class BeneficiariesRoute extends AppRoute {
 
   @override
   Widget pageBuilder(BuildContext context, GoRouterState state) {
-    return BeneficiariesScreen();
+    return const BeneficiariesScreen();
   }
 }

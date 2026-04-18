@@ -9,6 +9,6 @@ class HistoryRoute extends AppRoute {
 
   @override
   Widget pageBuilder(BuildContext context, GoRouterState state) {
-    return HistoryScreen();
+    return const HistoryScreen();
   }
 }

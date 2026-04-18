@@ -9,6 +9,6 @@ class HomeRoute extends AppRoute {
 
   @override
   Widget pageBuilder(BuildContext context, GoRouterState state) {
-    return HomeScreen();
+    return const HomeScreen();
   }
 }

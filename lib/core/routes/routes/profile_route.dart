@@ -9,6 +9,6 @@ class ProfileRoute extends AppRoute {
 
   @override
   Widget pageBuilder(BuildContext context, GoRouterState state) {
-    return ProfileScreen();
+    return const ProfileScreen();
   }
 }

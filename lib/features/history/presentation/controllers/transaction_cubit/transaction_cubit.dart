@@ -3,8 +3,6 @@ import 'package:top_up_app/core/services/use_cases/base_use_case.dart';
 
 import 'package:top_up_app/features/history/_history.dart';
 
-import 'transaction_state.dart';
-
 class TransactionCubit extends Cubit<TransactionState> {
   final GetTransactionsUseCase getTransactionsUseCase;
   final TopUpUseCase topUpUseCase;
