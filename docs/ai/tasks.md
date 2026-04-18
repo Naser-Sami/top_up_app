@@ -81,11 +81,11 @@ o
 - [x] **3.10** Register `IBeneficiaryRepository → BeneficiaryRepositoryImpl`, `GetBeneficiariesUseCase`, and `AddBeneficiaryUseCase` in `init_controllers.dart`.
 
 ### Transactions
-- [ ] **3.11** Create `TransactionModel` in `lib/features/history/data/models/` with `fromJson`/`toJson`.
-- [ ] **3.12** Create `TransactionMapper` in `lib/features/history/data/mapper/`.
-- [ ] **3.13** Create `TransactionRemoteDataSource` — returns a hardcoded list of mock transactions for the **current calendar month** (include enough spend so that monthly-limit tests are meaningful but not yet at the cap).
-- [ ] **3.14** Create `TransactionRepositoryImpl` implementing `ITransactionRepository`; the `topUp` method must apply the AED 3 fee and create a new `TransactionEntity` with the correct fields.
-- [ ] **3.15** Register `ITransactionRepository → TransactionRepositoryImpl`, `GetTransactionsUseCase`, and `TopUpUseCase` in `init_controllers.dart`.
+- [x] **3.11** Create `TransactionModel` in `lib/features/history/data/models/` with `fromJson`/`toJson`.
+- [x] **3.12** Create `TransactionMapper` in `lib/features/history/data/mapper/`.
+- [x] **3.13** Create `TransactionRemoteDataSource` — returns a hardcoded list of mock transactions for the **current calendar month** (include enough spend so that monthly-limit tests are meaningful but not yet at the cap).
+- [x] **3.14** Create `TransactionRepositoryImpl` implementing `ITransactionRepository`; the `topUp` method must apply the AED 3 fee and create a new `TransactionEntity` with the correct fields.
+- [x] **3.15** Register `ITransactionRepository → TransactionRepositoryImpl`, `GetTransactionsUseCase`, and `TopUpUseCase` in `init_controllers.dart`.
 
 ---
 
