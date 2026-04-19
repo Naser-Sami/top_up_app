@@ -101,8 +101,8 @@ o
 
 ### Screens & Widgets
 - [x] **4.4** **Home Screen** (`home_screen.dart`): Display user balance and verification badge; show summary cards for beneficiaries and recent transactions. Load data on screen init via `UserCubit` + `TransactionCubit`.
-- [ ] **4.5** **Beneficiaries Screen** (`beneficiaries_screen.dart`): List all beneficiaries. Show a "Top Up" action per beneficiary. Show an "Add Beneficiary" button that is **disabled** (with tooltip) when 5 beneficiaries exist (visual guard; domain guard is in use case).
-- [ ] **4.6** **Add Beneficiary Bottom Sheet / Dialog**: Form with nickname (max 20 chars, validated live) and phone number fields. Submit calls `BeneficiaryCubit.addBeneficiary()`. Show inline error on failure.
+- [x] **4.5** **Beneficiaries Screen** (`beneficiaries_screen.dart`): List all beneficiaries. Show a "Top Up" action per beneficiary. Show an "Add Beneficiary" button that is **disabled** (with tooltip) when 5 beneficiaries exist (visual guard; domain guard is in use case).
+- [x] **4.6** **Add Beneficiary Bottom Sheet / Dialog**: Form with nickname (max 20 chars, validated live) and phone number fields. Submit calls `BeneficiaryCubit.addBeneficiary()`. Show inline error on failure.
 - [ ] **4.7** **Top-Up Bottom Sheet / Dialog**: Displays top-up option grid (BR-03 amounts). Shows total cost = selected amount + AED 3 fee. Confirm button checks balance display and calls `TransactionCubit.topUp()`. Show success/error feedback (snackbar or dialog).
 - [ ] **4.8** **History Screen** (`history_screen.dart`): List of `TransactionEntity` items showing beneficiary nickname, amount, fee, and date. Loaded via `TransactionCubit`.
 - [ ] **4.9** **Profile Screen** (`profile_screen.dart`): Display user name, balance, and verified/unverified status label.

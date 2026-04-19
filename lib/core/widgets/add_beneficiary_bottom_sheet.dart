@@ -78,7 +78,7 @@ class _AddBeneficiaryBottomSheetState extends State<AddBeneficiaryBottomSheet> {
               width: 40,
               height: 4,
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
+                color: colors.outlineVariant,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -105,8 +105,10 @@ class _AddBeneficiaryBottomSheetState extends State<AddBeneficiaryBottomSheet> {
             controller: _phoneController,
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(
-              prefixText: '+971  ',
-              prefixStyle: TextStyle(color: colors.onSurface, fontSize: 16),
+              prefix: Text(
+                '+971  ',
+                style: TextStyle(color: colors.onSurface, fontSize: 16),
+              ),
               hintText: 'XX XXX XXXX',
               filled: true,
               fillColor: colors.surfaceDim,
@@ -123,8 +125,7 @@ class _AddBeneficiaryBottomSheetState extends State<AddBeneficiaryBottomSheet> {
           const SizedBox(height: 8),
           TextFormField(
             controller: _nicknameController,
-            maxLength:
-                20, // This automatically adds the "0/20" counter in Flutter
+            maxLength: 20,
             decoration: InputDecoration(
               hintText: 'Enter a friendly name',
               helperText: 'This name will appear on your top-up screen.',
@@ -141,15 +142,6 @@ class _AddBeneficiaryBottomSheetState extends State<AddBeneficiaryBottomSheet> {
           // Submit Button
           ElevatedButton(
             onPressed: _isFormValid ? _submit : null,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: colors.primary,
-              disabledBackgroundColor: colors.onSurfaceVariant,
-              disabledForegroundColor: colors.surfaceDim,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              elevation: 0,
-            ),
             child: const Text('Add Beneficiary'),
           ),
           const SizedBox(height: 32), // Bottom breathing room

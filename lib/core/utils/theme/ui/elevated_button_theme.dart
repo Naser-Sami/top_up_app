@@ -10,7 +10,7 @@ final elevatedButtonThemeDark = ElevatedButtonThemeData(
     disabledBackgroundColor: DarkThemeColors.primaryContainer,
     disabledForegroundColor: DarkThemeColors.onPrimary,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppRadius.r08),
+      borderRadius: BorderRadius.circular(AppRadius.r30),
     ),
     textStyle: AppTextStyle.titleMedium(),
   ),
@@ -25,7 +25,7 @@ final elevatedButtonThemeLight = ElevatedButtonThemeData(
     disabledBackgroundColor: LightThemeColors.primaryContainer,
     disabledForegroundColor: LightThemeColors.onPrimary,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppRadius.r08),
+      borderRadius: BorderRadius.circular(AppRadius.r30),
     ),
     textStyle: AppTextStyle.titleMedium(),
   ),

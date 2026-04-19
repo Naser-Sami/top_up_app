@@ -2,12 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/widgets/add_beneficiary_bottom_sheet.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
-
-import 'add_beneficiary_bottom_sheet.dart';
 
 class BeneficiariesCard extends StatelessWidget {
   const BeneficiariesCard({super.key});
+
+  void _showAddSheet(BuildContext context) {
+    final cubit = context.read<BeneficiaryCubit>();
+
+    showModalBottomSheet(
+      context: context,
+      useRootNavigator: true,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (bottomSheetContext) {
+        return BlocProvider.value(
+          value: cubit,
+          child: const AddBeneficiaryBottomSheet(),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,28 +41,27 @@ class BeneficiariesCard extends StatelessWidget {
               children: [
                 Text('My Beneficiaries', style: context.titleMedium),
                 const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    final cubit = context.read<BeneficiaryCubit>();
-
-                    showModalBottomSheet(
-                      context: context,
-                      useRootNavigator: true,
-                      isScrollControlled: true,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(24),
-                        ),
-                      ),
-                      builder: (bottomSheetContext) {
-                        return BlocProvider.value(
-                          value: cubit,
-                          child: const AddBeneficiaryBottomSheet(),
-                        );
-                      },
+                BlocSelector<BeneficiaryCubit, BeneficiaryState, int>(
+                  selector: (state) => state is BeneficiaryLoaded
+                      ? state.beneficiaries.length
+                      : 0,
+                  builder: (context, count) {
+                    final isAtCap = count >= 5;
+                    return IconButton(
+                      onPressed: isAtCap
+                          ? () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'You can only have up to 5 beneficiaries.',
+                                  ),
+                                ),
+                              );
+                            }
+                          : () => _showAddSheet(context),
+                      icon: const Icon(Icons.add_circle_outline_rounded),
                     );
                   },
-                  icon: const Icon(Icons.add_circle_outline_rounded),
                 ),
               ],
             ),
