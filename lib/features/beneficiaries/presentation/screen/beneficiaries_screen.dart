@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/app_dimensions/app_dimensions.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
 import 'package:top_up_app/core/widgets/add_beneficiary_bottom_sheet.dart';
+import 'package:top_up_app/core/routes/routes/top_up_route.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 import 'package:top_up_app/features/history/_history.dart';
 import 'package:top_up_app/features/profile/_profile.dart';
@@ -120,7 +121,7 @@ class BeneficiariesList extends StatelessWidget {
                 beneficiary: beneficiary,
                 spentThisMonth: spentThisMonth,
                 limit: limit,
-                onTopUp: () {},
+                onTopUp: () => TopUpRoute.go(context, beneficiary),
               );
             },
           );

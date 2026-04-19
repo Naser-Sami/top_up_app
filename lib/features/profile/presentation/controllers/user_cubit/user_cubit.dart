@@ -10,6 +10,13 @@ class UserCubit extends Cubit<UserState> {
 
   UserCubit({required this.getUserUseCase}) : super(const UserInitial());
 
+  void deductBalance(double amount) {
+    if (state is UserLoaded) {
+      final current = (state as UserLoaded).user;
+      emit(UserLoaded(current.copyWith(balance: current.balance - amount)));
+    }
+  }
+
   Future<void> fetchUser() async {
     emit(const UserLoading());
     try {

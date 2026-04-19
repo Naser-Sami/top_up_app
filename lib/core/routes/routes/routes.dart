@@ -3,6 +3,7 @@ import 'package:top_up_app/core/widgets/navigation_shell.dart';
 import 'history_route.dart';
 import 'home_route.dart';
 import 'beneficiaries_route.dart';
+import 'top_up_route.dart';
 import 'profile_route.dart';
 
 /// Top-level route list consumed by [GoRouter].
@@ -30,6 +31,12 @@ final List<RouteBase> routes = [
           BeneficiariesRoute().create(
             path: BeneficiariesRoute.path,
             name: BeneficiariesRoute.name,
+            routes: [
+              TopUpRoute().create(
+                path: TopUpRoute.path,
+                name: TopUpRoute.name,
+              ),
+            ],
           ),
         ],
       ),
