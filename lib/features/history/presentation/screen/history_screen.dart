@@ -1,52 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
+import 'package:top_up_app/core/utils/extensions/build_context.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
-import 'package:top_up_app/features/history/domain/entities/transaction_entity.dart';
-import 'package:top_up_app/features/history/presentation/widgets/transaction_card.dart';
+import 'package:top_up_app/features/history/_history.dart';
 
-class HistoryScreen extends StatelessWidget {
+class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
 
   @override
+  State<HistoryScreen> createState() => _HistoryScreenState();
+}
+
+class _HistoryScreenState extends State<HistoryScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _fetchData();
+  }
+
+  Future<void> _fetchData() async {
+    final cubit = context.read<TransactionCubit>();
+    if (cubit.state is TransactionInitial) {
+      cubit.fetchTransactions();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = context.textTheme;
+    final colors = context.colorScheme;
 
-    // Sample data — replace with BLoC-driven list when ready.
-    const sampleBeneficiary = BeneficiaryEntity(
-      id: '1',
-      nickname: 'Sarah',
-      phoneNumber: '+971 50 123 4567',
-    );
-
-    final sampleTransaction = TransactionEntity(
-      id: 'TXN123456789',
-      beneficiaryId: '1',
-      amount: 50,
-      fee: 1,
-      createdAt: DateTime(2026, 4, 15, 10, 30),
-    );
+    final beneficiaries = context
+        .select<BeneficiaryCubit, List<BeneficiaryEntity>>(
+          (c) => c.state is BeneficiaryLoaded
+              ? (c.state as BeneficiaryLoaded).beneficiaries
+              : [],
+        );
 
     return Scaffold(
       appBar: AppBar(title: const Text('Transaction History')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppPadding.p16,
-          vertical: AppPadding.p20,
-        ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'All your top-up transactions',
               style: textTheme.bodyMedium?.copyWith(
-                color: colorScheme.onSurfaceVariant,
+                color: colors.onSurfaceVariant,
               ),
             ),
             const SizedBox(height: AppSize.s16),
-            TransactionCard(
-              transaction: sampleTransaction,
-              beneficiary: sampleBeneficiary,
+            BlocBuilder<TransactionCubit, TransactionState>(
+              builder: (context, state) {
+                if (state is TransactionLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (state is TransactionError) {
+                  return Center(child: Text(state.message));
+                }
+
+                if (state is TransactionLoaded) {
+                  final transactions = state.transactions;
+
+                  if (transactions.isEmpty) {
+                    return const Center(child: Text('No transactions found.'));
+                  }
+
+                  return Expanded(
+                    child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        final transaction = transactions[index];
+                        final beneficiary = beneficiaries.firstWhere(
+                          (b) => b.id == transaction.beneficiaryId,
+                          orElse: () => const BeneficiaryEntity(
+                            id: '',
+                            nickname: 'Unknown',
+                            phoneNumber: '',
+                          ),
+                        );
+
+                        return TransactionCard(
+                          transaction: transaction,
+                          beneficiary: beneficiary,
+                        );
+                      },
+                      separatorBuilder: (context, _) =>
+                          const SizedBox(height: AppSize.s16),
+                      itemCount: transactions.length,
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
           ],
         ),

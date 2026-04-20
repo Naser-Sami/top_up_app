@@ -130,21 +130,35 @@ class TransactionCard extends StatelessWidget {
                       const SizedBox(height: AppSize.s02),
                       Row(
                         children: [
-                          Text(
-                            transaction.id,
-                            style: textTheme.bodySmall?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: colorScheme.onSurface,
+                          Flexible(
+                            child: Text(
+                              transaction.id,
+                              style: textTheme.bodySmall?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: colorScheme.onSurface,
+                              ),
                             ),
                           ),
                           const SizedBox(width: AppSize.s08),
-                          Text(
-                            '• $formattedDate',
-                            style: textTheme.bodySmall?.copyWith(
-                              color: colorScheme.onSurfaceVariant,
+                          Flexible(
+                            flex: 2,
+                            child: Text(
+                              '• $formattedDate',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: textTheme.bodySmall?.copyWith(
+                                color: colorScheme.onSurfaceVariant,
+                              ),
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(height: AppSize.s02),
+                      Text(
+                        'Fee AED ${transaction.fee.toStringAsFixed(0)}',
+                        style: textTheme.titleSmall?.copyWith(
+                          color: colorScheme.onSurface,
+                        ),
                       ),
                     ],
                   ),
