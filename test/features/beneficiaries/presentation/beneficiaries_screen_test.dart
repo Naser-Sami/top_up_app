@@ -34,7 +34,7 @@ void main() {
     mockTransactionCubit = MockTransactionCubit();
 
     // Default return values to avoid errors
-    when(() => mockUserCubit.state).thenReturn(UserLoaded(UserEntity(id: 'u1', name: 'Naser', balance: 1000, isVerified: true)));
+    when(() => mockUserCubit.state).thenReturn(const UserLoaded(UserEntity(id: 'u1', name: 'Naser', balance: 1000, isVerified: true)));
     when(() => mockTransactionCubit.state).thenReturn(const TransactionLoaded([]));
   });
 

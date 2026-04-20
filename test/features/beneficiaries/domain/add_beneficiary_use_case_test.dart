@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:top_up_app/core/errors/failure.dart';
 import 'package:top_up_app/features/beneficiaries/domain/entities/beneficiary_entity.dart';
 import 'package:top_up_app/features/beneficiaries/domain/params/add_beneficiary_params.dart';
 import 'package:top_up_app/features/beneficiaries/domain/repo/i_beneficiary_repository.dart';
@@ -14,8 +13,8 @@ void main() {
   late AddBeneficiaryUseCase useCase;
 
   // Shared fixtures
-  final tBeneficiary = BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
-  final tValidParams = AddBeneficiaryParams(nickname: 'Alice', phoneNumber: '+971501234567');
+  final tBeneficiary = const BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
+  final tValidParams = const AddBeneficiaryParams(nickname: 'Alice', phoneNumber: '+971501234567');
   final tFiveBeneficiaries = List.generate(5, (i) =>
       BeneficiaryEntity(id: 'b$i', nickname: 'Name$i', phoneNumber: '+9715000000$i'));
 
@@ -39,7 +38,7 @@ void main() {
 
     // 5.1b
     test('returns Left(Failure) when nickname is empty (BR-02)', () async {
-      final params = AddBeneficiaryParams(nickname: '', phoneNumber: '+971501234567');
+      final params = const AddBeneficiaryParams(nickname: '', phoneNumber: '+971501234567');
 
       final result = await useCase(params);
 

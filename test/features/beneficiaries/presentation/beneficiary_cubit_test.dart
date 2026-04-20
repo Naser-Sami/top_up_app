@@ -18,9 +18,9 @@ void main() {
   late MockGetBeneficiariesUseCase mockGetUseCase;
   late BeneficiaryCubit cubit;
 
-  final tBeneficiary = BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
+  final tBeneficiary = const BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
   final tList = [tBeneficiary];
-  final tParams = AddBeneficiaryParams(nickname: 'Alice', phoneNumber: '+971501234567');
+  final tParams = const AddBeneficiaryParams(nickname: 'Alice', phoneNumber: '+971501234567');
 
   setUp(() {
     mockAddUseCase = MockAddBeneficiaryUseCase();

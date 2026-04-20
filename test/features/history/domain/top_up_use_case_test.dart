@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:top_up_app/core/errors/failure.dart';
 import 'package:top_up_app/features/beneficiaries/domain/entities/beneficiary_entity.dart';
 import 'package:top_up_app/features/history/domain/entities/transaction_entity.dart';
 import 'package:top_up_app/features/history/domain/params/top_up_params.dart';
@@ -15,9 +14,9 @@ void main() {
   late MockITransactionRepository mockRepo;
   late TopUpUseCase useCase;
 
-  final tVerifiedUser = UserEntity(id: 'u1', name: 'Ahmed', balance: 2000.0, isVerified: true);
-  final tUnverifiedUser = UserEntity(id: 'u1', name: 'Ahmed', balance: 2000.0, isVerified: false);
-  final tBeneficiary = BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
+  final tVerifiedUser = const UserEntity(id: 'u1', name: 'Ahmed', balance: 2000.0, isVerified: true);
+  final tUnverifiedUser = const UserEntity(id: 'u1', name: 'Ahmed', balance: 2000.0, isVerified: false);
+  final tBeneficiary = const BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
   final now = DateTime.now();
 
   TransactionEntity makeTransaction(String beneficiaryId, double amount) =>
@@ -53,7 +52,7 @@ void main() {
 
     // 5.2b
     test('returns Left(Failure) when balance < amount + 3 (BR-05)', () async {
-      final poorUser = UserEntity(id: 'u1', name: 'Ahmed', balance: 10.0, isVerified: true);
+      final poorUser = const UserEntity(id: 'u1', name: 'Ahmed', balance: 10.0, isVerified: true);
       final result = await useCase(makeParams(user: poorUser, amount: 50.0)); // needs 53, has 10
       expect(result.isLeft(), true);
       verifyNever(() => mockRepo.topUp(any()));
@@ -107,7 +106,7 @@ void main() {
 
     // 5.2g — BR-10: balance failure reported before monthly-limit failure
     test('reports balance failure before monthly-limit failure when both conditions fail (BR-10)', () async {
-      final brokeUser = UserEntity(id: 'u1', name: 'Ahmed', balance: 2.0, isVerified: true);
+      final brokeUser = const UserEntity(id: 'u1', name: 'Ahmed', balance: 2.0, isVerified: true);
       final existingSpend = [makeTransaction('b1', 980.0)]; // would also exceed limit
       // balance=2 < 53, AND monthly would exceed 1000 — BR-05 must fire first
       final result = await useCase(makeParams(user: brokeUser, amount: 50.0, monthlyTransactions: existingSpend));

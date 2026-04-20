@@ -13,7 +13,7 @@ void main() {
   late MockIUserRepository mockRepo;
   late GetUserUseCase useCase;
 
-  final tUser = UserEntity(id: 'u1', name: 'Ahmed', balance: 1500.0, isVerified: true);
+  final tUser = const UserEntity(id: 'u1', name: 'Ahmed', balance: 1500.0, isVerified: true);
 
   setUp(() {
     mockRepo = MockIUserRepository();

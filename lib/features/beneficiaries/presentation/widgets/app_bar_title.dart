@@ -12,8 +12,8 @@ class AppBarTitle extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Flexible(
-          child: const Text(
+        const Flexible(
+          child: Text(
             'My Beneficiaries',
             overflow: TextOverflow.ellipsis,
           ),

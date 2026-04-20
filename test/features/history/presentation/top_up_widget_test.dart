@@ -24,8 +24,8 @@ void main() {
   late MockUserCubit mockUserCubit;
   late MockBeneficiaryCubit mockBeneficiaryCubit;
 
-  final tUser = UserEntity(id: 'u1', name: 'Ahmed', balance: 1500.0, isVerified: true);
-  final tBeneficiary = BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
+  final tUser = const UserEntity(id: 'u1', name: 'Ahmed', balance: 1500.0, isVerified: true);
+  final tBeneficiary = const BeneficiaryEntity(id: 'b1', nickname: 'Alice', phoneNumber: '+971501234567');
   final tTransaction = TransactionEntity(
     id: 'tx1', beneficiaryId: 'b1', amount: 50.0, fee: 3.0, createdAt: DateTime.now(),
   );
