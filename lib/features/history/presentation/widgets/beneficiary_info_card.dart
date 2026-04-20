@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/widgets/avatar_widget.dart';
 import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 
@@ -29,15 +30,14 @@ class BeneficiaryInfoCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: context.colorScheme.primary,
+                AvatarWidget(
+                  width: AppSize.s64,
+                  height: AppSize.s64,
                   child: Text(
-                    beneficiary.nickname
-                        .substring(0, beneficiary.nickname.length.clamp(0, 2))
-                        .toUpperCase(),
-                    style: context.titleLarge.copyWith(
-                      color: context.colorScheme.onPrimary,
+                    beneficiary.nickname[0].toUpperCase(),
+                  style: context.titleMedium.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),

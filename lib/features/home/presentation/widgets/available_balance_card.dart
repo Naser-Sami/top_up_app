@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
 import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/profile/_profile.dart';
@@ -12,6 +13,7 @@ class AvailableBalanceCard extends StatelessWidget {
     return SizedBox(
       width: context.width,
       child: BaseContainer(
+        padding: const EdgeInsets.symmetric(vertical: AppPadding.p04),
         child: ListTile(
           title: Text('Available Balance', style: context.titleSmall),
           subtitle: BlocSelector<UserCubit, UserState, double>(

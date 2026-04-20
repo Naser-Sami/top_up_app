@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
 import 'package:top_up_app/core/utils/extensions/date_time_extensions.dart';
+import 'package:top_up_app/core/utils/extensions/string_extensions.dart';
+import 'package:top_up_app/core/widgets/avatar_widget.dart';
 import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 import 'package:top_up_app/features/history/_history.dart';
@@ -70,9 +72,14 @@ class _RecentTransactionsList extends StatelessWidget {
 
               return ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: CircleAvatar(
-                  radius: 30,
-                  child: Text(beneficiary.nickname[0].toUpperCase()),
+                leading: AvatarWidget(
+                  child: Text(
+                    beneficiary.nickname.initials,
+                    style: AppTextStyle.titleMedium().copyWith(
+                      color: LightThemeColors.onPrimary,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
                 title: Text(beneficiary.nickname),
                 subtitle: Text(transaction.createdAt.toRelativeTime()),

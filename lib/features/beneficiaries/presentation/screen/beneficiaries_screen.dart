@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/app_dimensions/app_dimensions.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/utils/extensions/string_extensions.dart';
 import 'package:top_up_app/core/widgets/add_beneficiary_bottom_sheet.dart';
 import 'package:top_up_app/core/routes/routes/top_up_route.dart';
+import 'package:top_up_app/core/widgets/avatar_widget.dart';
 import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 import 'package:top_up_app/features/history/_history.dart';
@@ -162,9 +164,14 @@ class _BeneficiaryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-            leading: CircleAvatar(
-              radius: 30,
-              child: Text(beneficiary.nickname[0].toUpperCase()),
+            leading: AvatarWidget(
+              child: Text(
+                beneficiary.nickname.initials,
+                style: context.titleMedium.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
             title: Text(beneficiary.nickname),
             subtitle: Row(

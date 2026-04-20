@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/utils/extensions/string_extensions.dart';
+import 'package:top_up_app/core/widgets/avatar_widget.dart';
 import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 import 'package:top_up_app/features/history/domain/entities/transaction_entity.dart';
@@ -15,15 +17,6 @@ class TransactionCard extends StatelessWidget {
     required this.transaction,
     required this.beneficiary,
   });
-
-  /// Returns up to 2 uppercase initials from the beneficiary's nickname.
-  String _initials(String name) {
-    final parts = name.trim().split(RegExp(r'\s+'));
-    if (parts.length >= 2) {
-      return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
-    }
-    return parts[0].isNotEmpty ? parts[0][0].toUpperCase() : '?';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,23 +38,9 @@ class TransactionCard extends StatelessWidget {
             Row(
               children: [
                 // Avatar
-                Container(
-                  width: AppSize.s52,
-                  height: AppSize.s52,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        LightThemeColors.primary,
-                        LightThemeColors.secondary,
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    shape: BoxShape.circle,
-                  ),
-                  alignment: Alignment.center,
+                AvatarWidget(
                   child: Text(
-                    _initials(beneficiary.nickname),
+                    beneficiary.nickname.initials,
                     style: AppTextStyle.titleMedium().copyWith(
                       color: LightThemeColors.onPrimary,
                       fontWeight: FontWeight.w700,

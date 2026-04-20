@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/utils/extensions/string_extensions.dart';
 import 'package:top_up_app/core/widgets/add_beneficiary_bottom_sheet.dart';
+import 'package:top_up_app/core/widgets/avatar_widget.dart';
 import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 
@@ -101,12 +103,17 @@ class _BeneficiaryList extends StatelessWidget {
             itemBuilder: (context, index) {
               final beneficiary = beneficiaries[index];
               return SizedBox(
-                width: 80,
+                width: 65,
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      radius: 30,
-                      child: Text(beneficiary.nickname[0].toUpperCase()),
+                    AvatarWidget(
+                      child: Text(
+                        beneficiary.nickname.initials,
+                        style: AppTextStyle.titleMedium().copyWith(
+                          color: LightThemeColors.onPrimary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: AppSize.s08),
                     Text(

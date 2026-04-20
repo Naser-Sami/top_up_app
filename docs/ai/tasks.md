@@ -104,8 +104,8 @@ o
 - [x] **4.5** **Beneficiaries Screen** (`beneficiaries_screen.dart`): List all beneficiaries. Show a "Top Up" action per beneficiary. Show an "Add Beneficiary" button that is **disabled** (with tooltip) when 5 beneficiaries exist (visual guard; domain guard is in use case).
 - [x] **4.6** **Add Beneficiary Bottom Sheet / Dialog**: Form with nickname (max 20 chars, validated live) and phone number fields. Submit calls `BeneficiaryCubit.addBeneficiary()`. Show inline error on failure.
 - [x] **4.7** **Top-Up Screen**: Displays top-up option grid (BR-03 amounts). Shows total cost = selected amount + AED 3 fee. Confirm button checks balance display and calls `TransactionCubit.topUp()`. Show success/error feedback (snackbar or dialog).
-- [ ] **4.8** **History Screen** (`history_screen.dart`): List of `TransactionEntity` items showing beneficiary nickname, amount, fee, and date. Loaded via `TransactionCubit`.
-- [ ] **4.9** **Profile Screen** (`profile_screen.dart`): Display user name, balance, and verified/unverified status label.
+- [x] **4.8** **History Screen** (`history_screen.dart`): List of `TransactionEntity` items showing beneficiary nickname, amount, fee, and date. Loaded via `TransactionCubit`.
+- [x] **4.9** **Profile Screen** (`profile_screen.dart`): Display user name, balance, and verified/unverified status label.
 - [ ] **4.10** Implement global error/loading state handling: wrap screens in `BlocListener` and show `SnackBar` or an `ErrorWidget` for error states; show `CircularProgressIndicator` for loading states.
 - [ ] **4.11** Ensure `NavigationShell` bottom nav order matches `GoRouter` branch order: Home (0), Beneficiaries (1), History (2), Profile (3).
 
