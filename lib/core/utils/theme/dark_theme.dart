@@ -5,7 +5,7 @@ import 'ui/_ui.dart';
 
 ThemeData _darkTheme = ThemeData.dark(useMaterial3: true).copyWith(
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: DarkThemeColors.surface,
+  scaffoldBackgroundColor: DarkThemeColors.surfaceDim,
   colorScheme: darkColorScheme,
   textTheme: AppTextTheme.darkTextTheme,
   primaryTextTheme: AppTextTheme.darkTextTheme,

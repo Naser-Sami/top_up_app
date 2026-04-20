@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
 import 'package:top_up_app/core/utils/extensions/date_time_extensions.dart';
+import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 import 'package:top_up_app/features/history/_history.dart';
 
@@ -11,7 +12,7 @@ class RecentTransactionsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return BaseContainer(
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p16),
         child: Column(

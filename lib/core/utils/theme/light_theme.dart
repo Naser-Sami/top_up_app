@@ -9,7 +9,7 @@ ThemeData _lightTheme = ThemeData.light(useMaterial3: true).copyWith(
   textTheme: AppTextTheme.lightTextTheme,
   primaryTextTheme: AppTextTheme.lightTextTheme,
   textButtonTheme: lightTextButtonTheme,
-  scaffoldBackgroundColor: LightThemeColors.surface,
+  scaffoldBackgroundColor: LightThemeColors.surfaceDim,
   dividerTheme: lightDividerTheme,
   dividerColor: LightThemeColors.onSurface.withValues(alpha: 0.25),
   cardTheme: lightCardTheme,

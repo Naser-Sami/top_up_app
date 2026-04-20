@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/widgets/base_container.dart';
 
 class SummaryCard extends StatelessWidget {
   final double amount;
@@ -19,12 +20,9 @@ class SummaryCard extends StatelessWidget {
     final total = amount + fee;
     final remaining = balance - total;
 
-    return Container(
+    return BaseContainer(
+      color: const Color(0xFF1E3A8A),
       padding: const EdgeInsets.all(AppPadding.p20),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1E3A8A), // Deep Blue as in Image
-        borderRadius: BorderRadius.circular(AppRadius.r16),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

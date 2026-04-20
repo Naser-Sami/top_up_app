@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 import 'package:top_up_app/core/utils/extensions/build_context.dart';
+import 'package:top_up_app/core/widgets/base_container.dart';
 import 'package:top_up_app/features/beneficiaries/_beneficiaries.dart';
 
 class BeneficiaryInfoCard extends StatelessWidget {
@@ -9,7 +10,8 @@ class BeneficiaryInfoCard extends StatelessWidget {
   final double limit;
   final bool isVerified;
 
-  const BeneficiaryInfoCard({super.key, 
+  const BeneficiaryInfoCard({
+    super.key,
     required this.beneficiary,
     required this.spentThisMonth,
     required this.limit,
@@ -20,12 +22,7 @@ class BeneficiaryInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final usageRatio = spentThisMonth / limit;
 
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppRadius.r16),
-        side: BorderSide(color: context.colorScheme.outlineVariant),
-      ),
+    return BaseContainer(
       child: Padding(
         padding: const EdgeInsets.all(AppPadding.p16),
         child: Column(

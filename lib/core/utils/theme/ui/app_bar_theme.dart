@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:top_up_app/core/constants/_constants.dart';
 
 final appBarThemeDark = AppBarTheme(
-  backgroundColor: DarkThemeColors.surface,
+  backgroundColor: DarkThemeColors.surfaceDim,
   foregroundColor: DarkThemeColors.onSurface,
   elevation: 0,
   scrolledUnderElevation: 0.0,
@@ -17,7 +17,7 @@ final appBarThemeDark = AppBarTheme(
 );
 
 final appBarThemeLight = AppBarTheme(
-  backgroundColor: LightThemeColors.surface,
+  backgroundColor: LightThemeColors.surfaceDim,
   foregroundColor: LightThemeColors.onSurface,
   elevation: 0,
   scrolledUnderElevation: 0.0,

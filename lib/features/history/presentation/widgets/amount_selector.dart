@@ -153,9 +153,10 @@ class _AmountChoice extends StatelessWidget {
                 : context.colorScheme.outlineVariant,
             width: isSelected ? 2 : 1,
           ),
-          color: isSelected
-              ? context.colorScheme.primaryContainer.withValues(alpha: 0.1)
-              : null,
+          color: context.colorScheme.surface,
+          // color: isSelected
+          //     ? context.colorScheme.primaryContainer.withValues(alpha: 0.1)
+          //     : null,
         ),
         alignment: Alignment.center,
         child: Text(
