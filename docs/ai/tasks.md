@@ -117,49 +117,49 @@ o
 > failure-path test.
 
 ### Domain Use Case Unit Tests
-- [ ] **5.1** `test/features/beneficiaries/domain/add_beneficiary_use_case_test.dart`
-  - [ ] **5.1a** Returns `Left(Failure)` when beneficiary count is already 5 (BR-01).
-  - [ ] **5.1b** Returns `Left(Failure)` when nickname is empty (BR-02).
-  - [ ] **5.1c** Returns `Left(Failure)` when nickname exceeds 20 characters (BR-02).
-  - [ ] **5.1d** Returns `Right(BeneficiaryEntity)` on valid input with < 5 beneficiaries.
+- [x] **5.1** `test/features/beneficiaries/domain/add_beneficiary_use_case_test.dart`
+  - [x] **5.1a** Returns `Left(Failure)` when beneficiary count is already 5 (BR-01).
+  - [x] **5.1b** Returns `Left(Failure)` when nickname is empty (BR-02).
+  - [x] **5.1c** Returns `Left(Failure)` when nickname exceeds 20 characters (BR-02).
+  - [x] **5.1d** Returns `Right(BeneficiaryEntity)` on valid input with < 5 beneficiaries.
 
-- [ ] **5.2** `test/features/history/domain/top_up_use_case_test.dart`
-  - [ ] **5.2a** Returns `Left(Failure)` when amount is not in the valid options list (BR-03).
-  - [ ] **5.2b** Returns `Left(Failure)` when balance < amount + 3 (BR-05).
-  - [ ] **5.2c** Returns `Left(Failure)` when unverified user monthly spend would exceed AED 500 (BR-06).
-  - [ ] **5.2d** Returns `Left(Failure)` when verified user monthly spend would exceed AED 1,000 (BR-07).
-  - [ ] **5.2e** Returns `Left(Failure)` when total monthly spend across all beneficiaries would exceed AED 3,000 (BR-08).
-  - [ ] **5.2f** Returns `Right(TransactionEntity)` with fee = 3 on a fully valid transaction (BR-04).
-  - [ ] **5.2g** Verifies BR-10 ordering: balance failure is reported before monthly-limit failure when both conditions fail simultaneously.
+- [x] **5.2** `test/features/history/domain/top_up_use_case_test.dart`
+  - [x] **5.2a** Returns `Left(Failure)` when amount is not in the valid options list (BR-03).
+  - [x] **5.2b** Returns `Left(Failure)` when balance < amount + 3 (BR-05).
+  - [x] **5.2c** Returns `Left(Failure)` when unverified user monthly spend would exceed AED 500 (BR-06).
+  - [x] **5.2d** Returns `Left(Failure)` when verified user monthly spend would exceed AED 1,000 (BR-07).
+  - [x] **5.2e** Returns `Left(Failure)` when total monthly spend across all beneficiaries would exceed AED 3,000 (BR-08).
+  - [x] **5.2f** Returns `Right(TransactionEntity)` with fee = 3 on a fully valid transaction (BR-04).
+  - [x] **5.2g** Verifies BR-10 ordering: balance failure is reported before monthly-limit failure when both conditions fail simultaneously.
 
-- [ ] **5.3** `test/features/profile/domain/get_user_use_case_test.dart`
-  - [ ] **5.3a** Returns `Right(UserEntity)` when repository succeeds.
-  - [ ] **5.3b** Returns `Left(Failure)` when repository throws.
+- [x] **5.3** `test/features/profile/domain/get_user_use_case_test.dart`
+  - [x] **5.3a** Returns `Right(UserEntity)` when repository succeeds.
+  - [x] **5.3b** Returns `Left(Failure)` when repository throws.
 
 ### BLoC / Cubit Unit Tests
-- [ ] **5.4** `test/features/beneficiaries/presentation/beneficiary_cubit_test.dart`
-  - [ ] **5.4a** Emits `[Loading, Loaded]` on successful `loadBeneficiaries()`.
-  - [ ] **5.4b** Emits `[Loading, Error]` on failed `loadBeneficiaries()`.
-  - [ ] **5.4c** Emits `[Loading, Added]` on successful `addBeneficiary()`.
-  - [ ] **5.4d** Emits `[Loading, Error]` on failed `addBeneficiary()` (e.g., cap reached).
+- [x] **5.4** `test/features/beneficiaries/presentation/beneficiary_cubit_test.dart`
+  - [x] **5.4a** Emits `[Loading, Loaded]` on successful `loadBeneficiaries()`.
+  - [x] **5.4b** Emits `[Loading, Error]` on failed `loadBeneficiaries()`.
+  - [x] **5.4c** Emits `[Loading, Added, Loading, Loaded]` on successful `addBeneficiary()`.
+  - [x] **5.4d** Emits `[Loading, Error]` on failed `addBeneficiary()` (e.g., cap reached).
 
-- [ ] **5.5** `test/features/history/presentation/transaction_cubit_test.dart`
-  - [ ] **5.5a** Emits `[Loading, Loaded]` on successful `loadTransactions()`.
-  - [ ] **5.5b** Emits `[Loading, TopUpSuccess]` on successful `topUp()`.
-  - [ ] **5.5c** Emits `[Loading, Error]` on failed `topUp()`.
+- [x] **5.5** `test/features/history/presentation/transaction_cubit_test.dart`
+  - [x] **5.5a** Emits `[Loading, Loaded]` on successful `loadTransactions()`.
+  - [x] **5.5b** Emits `[Loading, TopUpSuccess, TransactionLoaded]` on successful `topUp()`.
+  - [x] **5.5c** Emits `[Loading, Error]` on failed `topUp()`.
 
 ### Widget Tests
-- [ ] **5.6** `test/features/beneficiaries/presentation/beneficiaries_screen_test.dart`
-  - [ ] **5.6a** Add Beneficiary button is disabled when 5 beneficiaries are present.
-  - [ ] **5.6b** Beneficiary list renders correct number of items.
+- [x] **5.6** `test/features/beneficiaries/presentation/beneficiaries_screen_test.dart`
+  - [x] **5.6a** Add Beneficiary button is disabled when 5 beneficiaries are present.
+  - [x] **5.6b** Beneficiary list renders correct number of items.
 
-- [ ] **5.7** `test/features/history/presentation/top_up_widget_test.dart`
-  - [ ] **5.7a** Top-up dialog shows correct total cost (selected amount + AED 3).
-  - [ ] **5.7b** Shows error snackbar/message when `TransactionError` is emitted.
-  - [ ] **5.7c** Shows success feedback when `TopUpSuccess` is emitted.
+- [x] **5.7** `test/features/history/presentation/top_up_widget_test.dart`
+  - [x] **5.7a** Top-up dialog shows correct total cost (selected amount + AED 3).
+  - [x] **5.7b** Shows error snackbar/message when `TransactionError` is emitted.
+  - [x] **5.7c** Shows success feedback when `TopUpSuccess` is emitted.
 
 ### README
-- [ ] **5.8** Write `README.md` at the project root with:
+- [x] **5.8** Write `README.md` at the project root with:
   - Setup instructions (`flutter pub get`, `flutter run`).
   - Assumptions made (mock backend, pre-seeded data, default user state).
   - Instructions to run tests (`flutter test`, `flutter test --coverage`).
