@@ -37,31 +37,72 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: BlocSelector<UserCubit, UserState, String>(
-          selector: (state) {
-            final user = state is UserLoaded ? state.user : null;
-            return user?.name ?? 'User';
-          },
-          builder: (context, username) {
-            final timeBasedGreeting = DateTime.now().greeting;
-            return Text('$timeBasedGreeting, $username 👋');
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<UserCubit, UserState>(
+          listener: (context, state) {
+            if (state is UserError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Failed to load user: ${state.message}'),
+                ),
+              );
+            }
           },
         ),
-      ),
-      body: const Padding(
-        padding: EdgeInsets.all(AppPadding.p16),
-        child: SingleChildScrollView(
-          child: Column(
-            spacing: AppSize.s16,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AvailableBalanceCard(),
-              VerifiedAccountCard(),
-              BeneficiariesCard(),
-              RecentTransactionsCard(),
-            ],
+        BlocListener<TransactionCubit, TransactionState>(
+          listener: (context, state) {
+            if (state is TransactionError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Failed to load transactions: ${state.message}',
+                  ),
+                ),
+              );
+            }
+          },
+        ),
+        BlocListener<BeneficiaryCubit, BeneficiaryState>(
+          listener: (context, state) {
+            if (state is BeneficiaryError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Failed to load beneficiaries: ${state.message}',
+                  ),
+                ),
+              );
+            }
+          },
+        ),
+      ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: BlocSelector<UserCubit, UserState, String>(
+            selector: (state) {
+              final user = state is UserLoaded ? state.user : null;
+              return user?.name ?? 'User';
+            },
+            builder: (context, username) {
+              final timeBasedGreeting = DateTime.now().greeting;
+              return Text('$timeBasedGreeting, $username 👋');
+            },
+          ),
+        ),
+        body: const Padding(
+          padding: EdgeInsets.all(AppPadding.p16),
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: AppSize.s16,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AvailableBalanceCard(),
+                VerifiedAccountCard(),
+                BeneficiariesCard(),
+                RecentTransactionsCard(),
+              ],
+            ),
           ),
         ),
       ),

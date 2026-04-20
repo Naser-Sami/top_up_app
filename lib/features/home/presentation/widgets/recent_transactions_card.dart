@@ -38,16 +38,18 @@ class _RecentTransactionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final beneficiaries = context
+        .select<BeneficiaryCubit, List<BeneficiaryEntity>>(
+          (c) => c.state is BeneficiaryLoaded
+              ? (c.state as BeneficiaryLoaded).beneficiaries
+              : [],
+        );
+
     return BlocBuilder<TransactionCubit, TransactionState>(
       builder: (context, state) {
         if (state is TransactionLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is TransactionLoaded) {
-          final beneficiaryState = context.read<BeneficiaryCubit>().state;
-          final beneficiaries = beneficiaryState is BeneficiaryLoaded
-              ? beneficiaryState.beneficiaries
-              : <BeneficiaryEntity>[];
-
           final transactions = state.transactions;
 
           if (transactions.isEmpty) {
