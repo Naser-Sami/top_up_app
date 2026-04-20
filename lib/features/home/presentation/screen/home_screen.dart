@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         body: const Padding(
-          padding: EdgeInsets.all(AppPadding.p16),
+          padding: EdgeInsets.symmetric(horizontal: AppPadding.p16),
           child: SingleChildScrollView(
             child: Column(
               spacing: AppSize.s16,
@@ -101,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 VerifiedAccountCard(),
                 BeneficiariesCard(),
                 RecentTransactionsCard(),
+                SizedBox(height: AppSize.s16),
               ],
             ),
           ),

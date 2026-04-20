@@ -60,7 +60,7 @@ class BeneficiariesScreen extends StatelessWidget {
             },
           ),
       body: const Padding(
-        padding: EdgeInsets.all(AppPadding.p16),
+        padding: EdgeInsets.symmetric(horizontal: AppPadding.p16),
         child: BeneficiariesList(),
       ),
     );
@@ -104,6 +104,7 @@ class BeneficiariesList extends StatelessWidget {
 
           return ListView.separated(
             itemCount: beneficiaries.length,
+            padding: const EdgeInsets.only(bottom: AppPadding.p16),
             separatorBuilder: (context, index) =>
                 const SizedBox(height: AppSize.s16),
             itemBuilder: (context, index) {

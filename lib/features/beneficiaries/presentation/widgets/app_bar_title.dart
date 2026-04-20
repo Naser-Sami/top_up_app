@@ -10,8 +10,14 @@ class AppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        const Text('My Beneficiaries'),
+        Flexible(
+          child: const Text(
+            'My Beneficiaries',
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
         const SizedBox(width: AppSize.s08),
         Container(
           padding: const EdgeInsets.symmetric(

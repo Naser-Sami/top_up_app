@@ -77,8 +77,8 @@ class _RecentTransactionsList extends StatelessWidget {
                 leading: AvatarWidget(
                   child: Text(
                     beneficiary.nickname.initials,
-                    style: AppTextStyle.titleMedium().copyWith(
-                      color: LightThemeColors.onPrimary,
+                    style: context.titleMedium.copyWith(
+                      color: Colors.white,
                       fontWeight: FontWeight.w700,
                     ),
                   ),

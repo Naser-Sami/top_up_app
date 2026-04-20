@@ -71,6 +71,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
                   return Expanded(
                     child: ListView.separated(
+                      padding: const EdgeInsets.only(bottom: AppPadding.p16),
                       itemBuilder: (context, index) {
                         final transaction = transactions[index];
                         final beneficiary = beneficiaries.firstWhere(

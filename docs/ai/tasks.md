@@ -106,8 +106,8 @@ o
 - [x] **4.7** **Top-Up Screen**: Displays top-up option grid (BR-03 amounts). Shows total cost = selected amount + AED 3 fee. Confirm button checks balance display and calls `TransactionCubit.topUp()`. Show success/error feedback (snackbar or dialog).
 - [x] **4.8** **History Screen** (`history_screen.dart`): List of `TransactionEntity` items showing beneficiary nickname, amount, fee, and date. Loaded via `TransactionCubit`.
 - [x] **4.9** **Profile Screen** (`profile_screen.dart`): Display user name, balance, and verified/unverified status label.
-- [ ] **4.10** Implement global error/loading state handling: wrap screens in `BlocListener` and show `SnackBar` or an `ErrorWidget` for error states; show `CircularProgressIndicator` for loading states.
-- [ ] **4.11** Ensure `NavigationShell` bottom nav order matches `GoRouter` branch order: Home (0), Beneficiaries (1), History (2), Profile (3).
+- [x] **4.10** Implement global error/loading state handling: wrap screens in `BlocListener` and show `SnackBar` or an `ErrorWidget` for error states; show `CircularProgressIndicator` for loading states.
+- [x] **4.11** Ensure `NavigationShell` bottom nav order matches `GoRouter` branch order: Home (0), Beneficiaries (1), History (2), Profile (3).
 
 ---
 
